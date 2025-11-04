@@ -1,0 +1,41 @@
+{
+  "name": "LLM + TTS Pipeline",
+  "displayName": "LLM Chat with Text-to-Speech",
+  "description": "A production-ready pipeline that processes user input through an LLM (GPT-4o-mini by default) and converts the response to speech using TTS. Includes streaming support for better user experience.",
+  "tags": ["llm", "tts", "openai", "voice", "streaming"],
+  "defaultProjectName": "llm-tts-graph",
+  "examples": {
+    "curlCommand": "curl http://localhost:3000/v1/graph:start -X POST -H 'Content-Type: application/json' -d '{\"input\": {\"user_input\":\"What is the weather like today?\"}}'",
+    "inputExample": {
+      "user_input": "What is the weather like today?"
+    },
+    "outputExample": {
+      "text": "I don't have access to real-time weather data...",
+      "audio": "base64_encoded_audio_data..."
+    }
+  },
+  "features": [
+    "LLM integration (OpenAI GPT-4o-mini)",
+    "Text-to-Speech conversion",
+    "Streaming responses",
+    "Text chunking for optimal TTS",
+    "Configurable providers"
+  ],
+  "requirements": {
+    "node": ">=18.0.0",
+    "dependencies": ["@inworld/runtime"],
+    "apiKeys": ["INWORLD_API_KEY"],
+    "optionalApiKeys": []
+  },
+  "configuration": {
+    "llm": {
+      "provider": "openai",
+      "model": "gpt-4o-mini",
+      "streaming": true
+    },
+    "tts": {
+      "provider": "default",
+      "voice": "default"
+    }
+  }
+}

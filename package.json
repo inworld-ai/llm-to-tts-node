@@ -1,0 +1,30 @@
+{
+  "name": "llm-to-tts-node",
+  "version": "1.0.0",
+  "description": "A production-ready pipeline that processes user input through an LLM and converts the response to speech using TTS",
+  "type": "module",
+  "main": "graph.ts",
+  "scripts": {
+    "start": "inworld serve graph.ts",
+    "run": "inworld run graph.ts",
+    "deploy": "inworld deploy graph.ts"
+  },
+  "keywords": [
+    "llm",
+    "tts",
+    "ai",
+    "graph",
+    "runtime",
+    "inworld"
+  ],
+  "author": "Inworld AI",
+  "license": "MIT",
+  "dependencies": {
+    "@inworld/runtime": "^0.6.4",
+    "@inworld/cli": "^0.2.16"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+

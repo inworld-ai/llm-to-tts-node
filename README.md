@@ -1,66 +1,67 @@
-# LLM + TTS Pipeline Graph
+# LLM + TTS Pipeline
 
-This is an Inworld Runtime graph that creates a complete conversational AI pipeline with LLM chat and text-to-speech capabilities.
+Production-ready LLM → TTS endpoint to integrate into your app.
 
-## Overview
+## Prerequisites
+- Node.js (v18 or higher)
 
-This template provides a production-ready pipeline that:
+## Get Started
 
-- Accepts user input and formats it for LLM processing
-- Sends requests to an LLM provider (OpenAI GPT-4o-mini by default)
-- Streams responses for better user experience
-- Chunks text for optimal TTS processing
-- Converts text responses to speech using TTS
+### Step 1: Authenticate
 
-## Getting Started
-
-### Installation
+Log in to your Inworld account:
 
 ```bash
-npm install
+inworld login
 ```
 
-### Configuration
+### Step 2: Run the Application
 
-Before running, you'll need to set up your API keys:
+**Test locally with instant feedback:**
 
 ```bash
-# Set your Inworld API key
-export INWORLD_API_KEY="your-inworld-api-key"
+inworld run ./graph.ts '{"input": {"user_input": "Hello, how are you?"}}'
 ```
 
-### Running the Graph
-
-#### As a server (recommended):
+**Serve as an HTTP server with Swagger UI:**
 
 ```bash
-npm start
-# or
-npx inworld serve {{graphFileName}}
+inworld serve ./graph.ts --swagger
 ```
 
-#### Direct execution:
+**Serve on custom port:**
 
 ```bash
-npm run run
-# or
-npx inworld run {{graphFileName}}
+inworld serve ./graph.ts --port 8080
 ```
 
-## Project Structure
+### Step 3: Deploy to Inworld Cloud
 
-- **`{{graphFileName}}`** - Main graph file with the LLM-TTS pipeline
-- **`package.json`** - Project dependencies and scripts
-- **`README.md`** - This file
+Deploy your graph to Inworld Cloud to create a persistent, production-ready endpoint:
 
-## Pipeline Architecture
+```bash
+inworld deploy ./graph.ts
+```
+
+## Repo Structure
+
+```
+llm-to-tts-node/
+├── graph.ts              # Main graph file with the LLM-TTS pipeline
+├── metadata.json         # Graph metadata
+├── package.json          # Project dependencies and scripts
+├── README.md             # Documentation
+└── LICENSE               # MIT License
+```
+
+## Architecture
 
 The graph uses a `SequentialGraphBuilder` with the following nodes in order:
 
-1. **LLMChatRequestBuilderNode**: Formats user input into LLM chat messages
-2. **RemoteLLMChatNode**: Sends requests to the LLM provider and receives responses
-3. **TextChunkingNode**: Breaks text into optimal chunks for TTS processing
-4. **RemoteTTSNode**: Converts text chunks to speech
+1. **LLMChatRequestBuilderNode** - Formats user input into LLM chat messages
+2. **RemoteLLMChatNode** - Sends requests to the LLM provider and receives responses
+3. **TextChunkingNode** - Breaks text into optimal chunks for TTS processing
+4. **RemoteTTSNode** - Converts text chunks to speech
 
 ## Customization
 
@@ -124,12 +125,6 @@ const graphBuilder = new SequentialGraphBuilder({
 });
 ```
 
-## Environment Variables
-
-The following environment variables can be configured:
-
-- `INWORLD_API_KEY`: API key for OpenAI (required for GPT models)
-
 ## Deployment
 
 To package your graph for deployment:
@@ -142,7 +137,7 @@ npx inworld deploy {{graphFileName}}
 
 This will create a deployment package that can be uploaded to Inworld Cloud.
 
-## Documentation
+## Troubleshooting
 
 For more information about:
 
@@ -150,8 +145,18 @@ For more information about:
 - LLM providers: Check provider-specific documentation
 - TTS options: See the TTS provider documentation
 
-## Requirements
+**Bug Reports**: [GitHub Issues](https://github.com/inworld-ai/llm-to-tts-node/issues)
 
-- Node.js >= 18.0.0
-- @inworld/cli package
-- Valid Inworld API key
+**General Questions**: For general inquiries and support, please email us at support@inworld.ai
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit changes: `git commit -m 'Add amazing feature'`
+4. Push to branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

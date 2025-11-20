@@ -20,7 +20,7 @@
   "author": "Inworld AI",
   "license": "MIT",
   "dependencies": {
-    "@inworld/runtime": "^0.6.4",
+    "@inworld/runtime": "^0.8.0",
     "@inworld/cli": "^0.2.16"
   },
   "engines": {

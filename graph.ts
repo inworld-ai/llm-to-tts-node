@@ -1,5 +1,4 @@
 import {
-  LLMChatRequestBuilderNode,
   RemoteLLMChatNode,
   RemoteTTSNode,
   SequentialGraphBuilder,
@@ -9,21 +8,26 @@ import {
 const graphBuilder = new SequentialGraphBuilder({
   id: 'llm-tts-graph',
   nodes: [
-    new LLMChatRequestBuilderNode({
-      messages: [
-        {
-          role: 'user',
-          content: { type: 'template', template: '{{user_input}}' },
-        },
-      ],
-    }),
     new RemoteLLMChatNode({
       provider: 'openai',
       modelName: 'gpt-4o-mini',
       stream: true,
+      messageTemplates: [
+        {
+          role: 'user',
+          content: {
+            type: 'template',
+            template: '{{user_input}}',
+          },
+        },
+      ],
     }),
     new TextChunkingNode(),
-    new RemoteTTSNode(),
+    new RemoteTTSNode({
+      speakerId: 'Ashley',
+      modelId: 'inworld-tts-1',
+      sampleRate: 24000,
+    }),
   ],
   enableRemoteConfig: false
 });

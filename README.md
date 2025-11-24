@@ -7,7 +7,20 @@ Production-ready LLM → TTS endpoint to integrate into your app.
 
 ## Get Started
 
-### Step 1: Authenticate
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/inworld-ai/llm-to-tts-node
+cd llm-to-tts-node
+```
+
+### Step 2: Install Dependencies
+
+```bash
+npm install
+```
+
+### Step 3: Authenticate
 
 Log in to your Inworld account:
 
@@ -15,7 +28,7 @@ Log in to your Inworld account:
 inworld login
 ```
 
-### Step 2: Run the Application
+### Step 4: Run the Application
 
 **Test locally with instant feedback:**
 
@@ -35,7 +48,7 @@ inworld serve ./graph.ts --swagger
 inworld serve ./graph.ts --port 8080
 ```
 
-### Step 3: Deploy to Inworld Cloud
+### Step 5: Deploy to Inworld Cloud
 
 Deploy your graph to Inworld Cloud to create a persistent, production-ready endpoint:
 

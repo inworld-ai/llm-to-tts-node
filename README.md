@@ -3,7 +3,7 @@
 Production-ready LLM → TTS endpoint to integrate into your app.
 
 ## Prerequisites
-- Node.js (v18 or higher)
+- Node.js (v20 or higher)
 
 ## Get Started
 

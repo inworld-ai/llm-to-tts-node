@@ -1,13 +1,31 @@
 # LLM + TTS Pipeline
 
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Powered by Inworld AI](https://img.shields.io/badge/Powered_by-Inworld_AI-orange)](https://inworld.ai/runtime)
+[![Documentation](https://img.shields.io/badge/Documentation-Read_Docs-blue)](https://docs.inworld.ai/docs/node/overview)
+[![Model Providers](https://img.shields.io/badge/Model_Providers-See_Models-purple)](https://docs.inworld.ai/docs/models#llm)
+
 Production-ready LLM → TTS endpoint to integrate into your app.
 
 ## Prerequisites
-- Node.js (v18 or higher)
+- Node.js (v20 or higher)
 
 ## Get Started
 
-### Step 1: Authenticate
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/inworld-ai/llm-to-tts-node
+cd llm-to-tts-node
+```
+
+### Step 2: Install Dependencies
+
+```bash
+npm install
+```
+
+### Step 3: Authenticate
 
 Log in to your Inworld account:
 
@@ -15,7 +33,7 @@ Log in to your Inworld account:
 inworld login
 ```
 
-### Step 2: Run the Application
+### Step 4: Run the Application
 
 **Test locally with instant feedback:**
 
@@ -35,7 +53,7 @@ inworld serve ./graph.ts --swagger
 inworld serve ./graph.ts --port 8080
 ```
 
-### Step 3: Deploy to Inworld Cloud
+### Step 5: Deploy to Inworld Cloud
 
 Deploy your graph to Inworld Cloud to create a persistent, production-ready endpoint:
 

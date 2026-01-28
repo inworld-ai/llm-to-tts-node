@@ -25,7 +25,7 @@ const graphBuilder = new SequentialGraphBuilder({
     new TextChunkingNode(),
     new RemoteTTSNode({
       speakerId: 'Ashley',
-      modelId: 'inworld-tts-1',
+      modelId: 'inworld-tts-1.5-max',
       sampleRate: 24000,
     }),
   ],

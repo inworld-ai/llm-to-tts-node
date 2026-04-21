@@ -15,10 +15,7 @@ const graphBuilder = new SequentialGraphBuilder({
       messageTemplates: [
         {
           role: 'user',
-          content: {
-            type: 'template',
-            template: '{{user_input}}',
-          },
+          content: '{{user_input}}',
         },
       ],
     }),

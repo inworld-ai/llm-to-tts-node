@@ -76,40 +76,41 @@ llm-to-tts-node/
 
 The graph uses a `SequentialGraphBuilder` with the following nodes in order:
 
-1. **LLMChatRequestBuilderNode** - Formats user input into LLM chat messages
-2. **RemoteLLMChatNode** - Sends requests to the LLM provider and receives responses
-3. **TextChunkingNode** - Breaks text into optimal chunks for TTS processing
-4. **RemoteTTSNode** - Converts text chunks to speech
+1. **RemoteLLMChatNode** - Sends user input to the LLM provider and receives responses (with message templates for prompt formatting)
+2. **TextChunkingNode** - Breaks text into optimal chunks for TTS processing
+3. **RemoteTTSNode** - Converts text chunks to speech
 
 ## Customization
 
 ### Changing the LLM Provider
 
-Edit the `RemoteLLMChatNode` configuration in `{{graphFileName}}`:
+Edit the `RemoteLLMChatNode` configuration in `graph.ts`:
 
 ```typescript
 new RemoteLLMChatNode({
   provider: 'anthropic', // Change to 'anthropic', 'google', etc.
   modelName: 'claude-3-sonnet', // Change to desired model
   stream: true,
-  // Add other provider-specific options
 });
 ```
 
 ### Modifying the System Prompt
 
-Add system messages to the `LLMChatRequestBuilderNode`:
+Add system messages to the `RemoteLLMChatNode` via `messageTemplates`:
 
 ```typescript
-new LLMChatRequestBuilderNode({
-  messages: [
+new RemoteLLMChatNode({
+  provider: 'openai',
+  modelName: 'gpt-4o-mini',
+  stream: true,
+  messageTemplates: [
     {
       role: 'system',
-      content: { type: 'text', text: 'You are a helpful assistant...' },
+      content: 'You are a helpful assistant...',
     },
     {
       role: 'user',
-      content: { type: 'template', template: '{{user_input}}' },
+      content: '{{user_input}}',
     },
   ],
 });
@@ -134,7 +135,6 @@ You can insert additional nodes into the pipeline:
 const graphBuilder = new SequentialGraphBuilder({
   id: 'custom-text-node-llm',
   nodes: [
-    new LLMChatRequestBuilderNode({...}),
     new RemoteLLMChatNode({...}),
     new CustomProcessingNode(),  // Your custom node
     new TextChunkingNode(),
@@ -150,7 +150,7 @@ To package your graph for deployment:
 ```bash
 npm run deploy
 # or
-npx inworld deploy {{graphFileName}}
+npx inworld deploy ./graph.ts
 ```
 
 This will create a deployment package that can be uploaded to Inworld Cloud.

@@ -5,9 +5,9 @@
   "type": "module",
   "main": "graph.ts",
   "scripts": {
-    "start": "inworld serve graph.ts",
-    "run": "inworld run graph.ts",
-    "deploy": "inworld deploy graph.ts"
+    "start": "inworld-runtime serve graph.ts",
+    "run": "inworld-runtime run graph.ts",
+    "deploy": "inworld-runtime deploy graph.ts"
   },
   "keywords": [
     "llm",
@@ -20,8 +20,7 @@
   "author": "Inworld AI",
   "license": "MIT",
   "dependencies": {
-    "@inworld/cli": "^0.2.16",
-    "@inworld/runtime": "^1.0.6"
+    "@inworld/runtime": "^1.0.7"
   },
   "engines": {
     "node": ">=20.0.0"

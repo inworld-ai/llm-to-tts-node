@@ -30,7 +30,7 @@ npm install
 Log in to your Inworld account:
 
 ```bash
-inworld login
+inworld-runtime login
 ```
 
 ### Step 4: Run the Application
@@ -38,19 +38,19 @@ inworld login
 **Test locally with instant feedback:**
 
 ```bash
-inworld run ./graph.ts '{"input": {"user_input": "Hello, how are you?"}}'
+inworld-runtime run ./graph.ts '{"input": {"user_input": "Hello, how are you?"}}'
 ```
 
 **Serve as an HTTP server with Swagger UI:**
 
 ```bash
-inworld serve ./graph.ts --swagger
+inworld-runtime serve ./graph.ts --swagger
 ```
 
 **Serve on custom port:**
 
 ```bash
-inworld serve ./graph.ts --port 8080
+inworld-runtime serve ./graph.ts --port 8080
 ```
 
 ### Step 5: Deploy to Inworld Cloud
@@ -58,7 +58,7 @@ inworld serve ./graph.ts --port 8080
 Deploy your graph to Inworld Cloud to create a persistent, production-ready endpoint:
 
 ```bash
-inworld deploy ./graph.ts
+inworld-runtime deploy ./graph.ts
 ```
 
 ## Repo Structure
@@ -150,7 +150,7 @@ To package your graph for deployment:
 ```bash
 npm run deploy
 # or
-npx inworld deploy ./graph.ts
+npx inworld-runtime deploy ./graph.ts
 ```
 
 This will create a deployment package that can be uploaded to Inworld Cloud.

@@ -21,7 +21,7 @@
   "license": "MIT",
   "dependencies": {
     "@inworld/cli": "^0.2.16",
-    "@inworld/runtime": "^1.0.6"
+    "@inworld/runtime": "1.0.7-rc.2"
   },
   "engines": {
     "node": ">=20.0.0"
